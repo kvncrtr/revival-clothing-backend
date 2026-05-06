@@ -1,8 +1,11 @@
-from fastapi import FastAPI, Depends
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Header
 
 app = FastAPI()
 
-@app.get('/drops/{num}', response_class=HTMLResponse)
-def drop(num: int):
-    return f'<h1>Drop collection you subscribed to: {num}</h1>'
+@app.get('/agent')
+def greet(user_agent:str =  Header(), status_code=200):
+    return user_agent, status_code
+
+if __name__ == '__main__':
+    import uvicorn
+    uvicorn.run('main:app', reload=True)
