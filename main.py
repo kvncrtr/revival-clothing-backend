@@ -23,7 +23,11 @@ def get_username(username: str):
 
 # Data Sharing - Query Parameters
 @app.get('/profile')
-def get_query_params(query: str | None = None, city: str | None = None, limit: int = 10):
+def get_query_params(
+        query: str | None = None, 
+        city: str | None = None, 
+        limit: int = 10
+    ):
     return {
         'search_query': query,
         'city': city,
