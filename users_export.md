@@ -1,0 +1,9 @@
+| id | username | email | phone_number | sex | create_at | first_name | last_name |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | repayjesus | kevin@gorpstudios.com | 4049983276 | M | 2026-05-18 06:45:02.608978-04 | Kevin | Carter |
+| 2 | jordan_reed | jordan.reed@example.com | 4045551201 | M | 2026-05-18 06:45:02.608978-04 | Jordan | Reed |
+| 3 | maya_thompson | maya.thompson@example.com | 4045558732 | F | 2026-05-18 06:45:02.608978-04 | Maya | Thompson |
+| 4 | caleb_wright | caleb.wright@example.com | 4045554429 | M | 2026-05-18 06:45:02.608978-04 | Caleb | Wright |
+| 5 | nina_brooks | nina.brooks@example.com | 4045557812 | F | 2026-05-18 08:21:02.618761-04 | Nina | Brooks |
+| 6 | marcus_hale | marcus.hale@example.com | 4045552298 | M | 2026-05-18 08:21:02.618761-04 | Marcus | Hale |
+| 7 | elena_cross | elena.cross@example.com | 4045556641 | F | 2026-05-18 08:21:02.618761-04 | Elena | Cross |

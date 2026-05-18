@@ -1,0 +1,15 @@
+| id | user_id | order_number | drop_id | amount_cents | eta | address | tracking | shipping_provider | line_items | qty |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 4 | 1 | S9999C01D01 | 1 | 29997 | 2026-05-25 06:45:50.802934-04 | 1335 west pace ferry way, Atlanta, GA, 30327 | 819740732389rt4h2845t890g548h9 | UPS | {L,S,L} | 3 |
+| 5 | 2 | S9999C02D01 | 1 | 9999 | 2026-05-25 06:45:50.802934-04 | Gainsborough Rd, West Ham, London, E15 3AF, LN | bhdjsvbke58493584fjkaw | DHL | {S} | 1 |
+| 6 | 3 | S9999C03D01 | 1 | 49995 | 2026-05-25 06:45:50.802934-04 | 2 Rue Auguste Gache, Grenoble, Isère, 38000, FR | 4572vjdskv35748kdsjfl93275843 | UPS | {S,S,M,M,M} | 5 |
+| 7 | 4 | S9999C04D01 | 1 | 19998 | 2026-05-25 06:51:57.347554-04 | 742 Evergreen Terrace, Springfield, IL, 62704 | 1Z999AA10123456784 | UPS | {M,M} | 2 |
+| 8 | 1 | S9999C01D02 | 1 | 9999 | 2026-05-25 06:51:57.347554-04 | 1335 West Paces Ferry Way, Atlanta, GA, 30327 | 9400111899223857364721 | USPS | {L} | 1 |
+| 9 | 2 | S9999C02D02 | 1 | 39996 | 2026-05-25 06:51:57.347554-04 | Gainsborough Rd, West Ham, London, E15 3AF, LN | JD014600006421344573 | DHL | {S,M,L,XL} | 4 |
+| 10 | 3 | S9999C03D02 | 1 | 29997 | 2026-05-25 06:51:57.347554-04 | 2 Rue Auguste Gache, Grenoble, Isère, 38000, FR | 1Z888BB20234567895 | UPS | {M,M,L} | 3 |
+| 11 | 4 | S9999C04D02 | 1 | 49995 | 2026-05-25 06:51:57.347554-04 | 742 Evergreen Terrace, Springfield, IL, 62704 |  | FedEx | {S,S,M,L,XL} | 5 |
+| 12 | 1 | S9999C01D03 | 1 | 19998 | 2026-05-25 06:51:57.347554-04 | 1335 West Paces Ferry Way, Atlanta, GA, 30327 | 78123456789012345678 | DHL | {XL,XL} | 2 |
+| 13 | 2 | S9999C02D03 | 1 | 59994 | 2026-05-25 06:51:57.347554-04 | Gainsborough Rd, West Ham, London, E15 3AF, LN |  | UPS | {S,S,M,M,L,L} | 6 |
+| 14 | 3 | S9999C03D03 | 1 | 9999 | 2026-05-25 06:51:57.347554-04 | 2 Rue Auguste Gache, Grenoble, Isère, 38000, FR | 9400550200881234567890 | USPS | {S} | 1 |
+| 15 | 4 | S9999C04D03 | 1 | 29997 | 2026-05-25 06:51:57.347554-04 | 742 Evergreen Terrace, Springfield, IL, 62704 | FDX998877665544332211 | FedEx | {M,L,XL} | 3 |
+| 16 | 1 | S9999C01D04 | 1 | 69993 | 2026-05-25 06:51:57.347554-04 | 1335 West Paces Ferry Way, Atlanta, GA, 30327 |  | UPS | {S,S,M,M,L,XL,XL} | 7 |
