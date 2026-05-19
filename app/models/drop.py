@@ -1,5 +1,19 @@
 from pydantic import BaseModel
+from enum import Enum
+from sqlalchemy import Column, Integer, String, Time, ForeignKey
 from datetime import datetime
+from app.database import Base
+
+class StatusType(str, Enum):
+    coming = "coming"
+    available = "available"
+    sold_out = "sold_out"
+    archived = "archived"
+    discontinued = "discontinued"
+    vintage = "vintage"
+
+# class DropModel():
+
 
 class DropIn(BaseModel):
     name: str
