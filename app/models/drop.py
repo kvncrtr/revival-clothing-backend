@@ -1,8 +1,18 @@
 from pydantic import BaseModel
 from enum import Enum
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Enum as SQLEnum, text
-from sqlalchemy.sql import func
 from datetime import datetime
+
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
+from sqlalchemy import (
+    Column, 
+    Integer, 
+    String, 
+    DateTime, 
+    text, 
+    Enum as SQLEnum
+)
+
 from app.database import Base
 
 class StatusType(str, Enum):
@@ -13,7 +23,9 @@ class StatusType(str, Enum):
     discontinued = "discontinued"
     vintage = "vintage"
 
-class DropModel(Base):
+# SQLAlchemy Models
+
+class Drop(Base):
     __tablename__ = "drops"
 
     id = Column(Integer, primary_key=True)
@@ -43,7 +55,8 @@ class DropModel(Base):
     updated_at = Column(
         DateTime(timezone=True),
         nullable=True,
-        server_default=func.now()
+        server_default=func.now(),
+        onupdate=func.now()
     )
 
     owner = Column(String, nullable=True)
@@ -51,39 +64,35 @@ class DropModel(Base):
     collection_type = Column(
         String,
         nullable=True,
-        server_default=text("'streetware'")
+        server_default=text("'streetwear'")
     )
 
-    inventory_count = Column(
-        Integer,
-        nullable=False
-    )
+    inventory_count = Column(Integer, nullable=False)
 
-'''
-ALTER TABLE drops
-DROP COLUMN units_count;
-'''
+    # This means a drop can have many waitinglist signups
+    waitlist_signups = relationship("WaitlistSignup", back_populates="drop")
 
+# Pydantic Response/Request Schemas
 
-
-class DropIn(BaseModel):
+class DropCreate(BaseModel):
     name: str
-    status: str
-    price: float
-    number_of_units: int
-
-
-class Drop(DropIn):
-    id: int
-    created_at: datetime
-    team: str
+    status: StatusType = StatusType.coming
+    price_cents: float
+    inventory_count: int
 
 class DropOut(BaseModel):
     id: int
     name: str
-    status: str
+    status: StatusType
     price: float
-    number_of_units: int
+    inventory_count: int
+    created_at: datetime | None = None
+    team: str | None = None
+    collection_type: str | None = None
+
+    model_config = {
+        "from_attributes": True
+    }
 
 class DropCreateResponse(BaseModel):
     message: str
