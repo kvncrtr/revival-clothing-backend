@@ -1,6 +1,27 @@
-from fastapi import HTTPException
-from app.models.drop import Drop, DropIn, DropCreateResponse
 from datetime import datetime
+from fastapi import HTTPException, Depends
+
+from sqlalchemy import text
+from sqlalchemy.orm import Session
+from sqlalchemy.exc import SQLAlchemyError
+
+from app.models.drop import Base, Drop, DropIn, DropCreateResponse
+
+def read_all_drops(db: Session):
+    try:
+        stmt = text("""
+            SELECT * FROM drops;
+        """)
+        
+        result = db.execute(stmt)
+        drops = result.mappings.all()
+        
+        return drops 
+    except SQLAlchemyError:
+        raise HTTPException(
+            status_code=500,
+            detail="Database error while reading drops."
+        )
 
 drops = [
     Drop(
@@ -56,7 +77,7 @@ def create_new_drop(drop_data: DropIn) -> DropCreateResponse:
 		"drop": new_drop
 	}
 
-def get_available_drops() -> list[Drop]:
+def read_available_drops() -> list[Drop]:
     available_drops = []
 
     for drop in drops:
@@ -65,7 +86,7 @@ def get_available_drops() -> list[Drop]:
 
     return available_drops
 
-def get_drop(id: int) -> Drop:
+def read_drop(id: int) -> Drop:
     for drop in drops:
         if drop.id == id:
             return drop
