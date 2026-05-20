@@ -369,4 +369,31 @@ GROUP BY
     u.first_name,
     u.last_name;
     
+ALTER TABLE drops
+DROP COLUMN units_count;
+
+ALTER TABLE drops
+ALTER COLUMN collection_type DROP DEFAULT;
+
+ALTER TABLE drops
+ALTER COLUMN collection_type SET DEFAULT 'streetwear';
+
+CREATE TABLE waitinglist_signups(
+    id BIGSERIAL PRIMARY KEY,
+    drop_id BIGSERIAL REFERENCES drops(id),
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    size TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE waitinglist_signups
+ALTER COLUMN drop_id SET  NOT NULL;
+
+ALTER TABLE waitinglist_signups
+RENAME TO waitlist_signups;
+
+ALTER TABLE waitlist_signups
+DROP CONSTRAINT waitinglist_signups_email_key;
 '''
