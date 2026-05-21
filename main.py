@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from app.controllers.drop import router as drop_router
+from app.database.db import Base, engine
 
 app = FastAPI()
+Base.metadata.create_all(bind=engine)
 
 @app.get('/')
 def home():

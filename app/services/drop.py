@@ -5,7 +5,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.models.drop import Base, Drop, DropIn, DropCreateResponse
+from app.models.drop import Drop, DropCreateResponse
 
 def read_all_drops(db: Session):
     try:
@@ -14,7 +14,7 @@ def read_all_drops(db: Session):
         """)
         
         result = db.execute(stmt)
-        drops = result.mappings.all()
+        drops = result.mappings().all()
         
         return drops 
     except SQLAlchemyError:
@@ -28,8 +28,8 @@ drops = [
         id=1,
         name='Easter Collection Tee',
         status='available',
-        price=39.99,
-        number_of_units=77,
+        price_cents=39.99,
+        inventory_count=77,
         created_at=datetime.now(),
         team="Founding Team"
     ),
@@ -37,8 +37,8 @@ drops = [
         id=2,
         name='Revival Hoodie',
         status='available',
-        price=79.99,
-        number_of_units=30,
+        price_cents=79.99,
+        inventory_count=30,
         created_at=datetime.now(),
         team="Founding Team"
     ),
@@ -46,14 +46,14 @@ drops = [
         id=3,
         name='Summer Faith Drop',
         status='coming_soon',
-        price=49.99,
-        number_of_units=178,
+        price_cents=49.99,
+        inventory_count=178,
         created_at=datetime.now(),
         team="Founding Team"
     )
 ]
 
-def create_new_drop(drop_data: DropIn) -> DropCreateResponse:
+def create_new_drop(drop_data: Drop) -> DropCreateResponse:
     if any(d.name == drop_data.name for d in drops):
         raise HTTPException(
             status_code=400, 
@@ -64,8 +64,8 @@ def create_new_drop(drop_data: DropIn) -> DropCreateResponse:
         id=len(drops) + 1,
         name=drop_data.name,
         status=drop_data.status,
-        price=drop_data.price,
-        number_of_units=drop_data.number_of_units,
+        price_cents=drop_data.price_cents,
+        inventory_count=drop_data.inventory_count,
         created_at=datetime.now(),
         team="Founding Team"
     )

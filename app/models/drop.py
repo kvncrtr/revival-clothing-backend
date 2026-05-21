@@ -13,7 +13,8 @@ from sqlalchemy import (
     Enum as SQLEnum
 )
 
-from app.database import Base
+from app.database.db import Base
+from app.models.waitlist_signups import WaitlistSignup
 
 class StatusType(str, Enum):
     coming = "coming"
@@ -84,7 +85,7 @@ class DropOut(BaseModel):
     id: int
     name: str
     status: StatusType
-    price: float
+    price_cents: float
     inventory_count: int
     created_at: datetime | None = None
     team: str | None = None
